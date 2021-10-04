@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+html {
+  font-size: 16px;
+  line-height: 1.3;
+  font-family: san-serif, serif;
+}
+
+a, button {
+  background: none;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  -webkit-text-decoration-skip: object;
+}
+
+button::-moz-focus-inner {
+  border: 0;
+}
