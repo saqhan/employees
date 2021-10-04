@@ -1,5 +1,8 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "cli": {
+    "analytics": "6b01882a-4151-4dd5-a622-22683ffefd95"
+  },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -20,7 +23,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/employees-app",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -36,7 +39,29 @@
             "scripts": []
           },
           "configurations": {
-            "production": {
+            "dev": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.dev.ts"
+                }
+              ],
+              "outputHashing": "all",
+              "sourceMap": true
+            },
+            "prod": {
               "budgets": [
                 {
                   "type": "initial",
@@ -70,9 +95,15 @@
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "port": 5200,
+          },
           "configurations": {
-            "production": {
-              "browserTarget": "employees-app:build:production"
+            "dev": {
+              "browserTarget": "employees-app:build:dev"
+            },
+            "prod": {
+              "browserTarget": "employees-app:build:prod"
             },
             "development": {
               "browserTarget": "employees-app:build:development"
