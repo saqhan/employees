@@ -6,9 +6,7 @@ import { StylesComponent } from './styles.component';
 
 
 @NgModule({
-  declarations: [
-    StylesComponent
-  ],
+  declarations: [StylesComponent],
   imports: [
     CommonModule,
     StylesRoutingModule

@@ -5,14 +5,12 @@ import { InputComponent } from './input.component';
 
 
 @NgModule({
-  declarations: [
-    InputComponent
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports: [
-    InputComponent
-  ]
+    declarations: [InputComponent],
+    imports: [
+        CommonModule
+    ],
+    exports: [
+        InputComponent
+    ]
 })
 export class InputModule { }

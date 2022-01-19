@@ -1,10 +1,38 @@
+<h2>Actions</h2>
+
 <h2>Form</h2>
-<app-button (click)="onPatchValue()">Patch Value</app-button>
 
-<form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
-  <app-input formControlName="input"></app-input>
-</form>
+<div class="wrapper">
 
+
+    <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
+
+        <app-button (click)="onPatchValue()">Patch Value</app-button>
+        <app-button (click)="onToggleInline()">Toggle Inline</app-button>
+        <br /><br /><br />
+
+        <app-form-field
+          label="Input"
+          [required]="true"
+          [control]="form.controls.input"
+          [isInline]="isInline"
+          [patternError]="regexErrors.numbers"
+        >
+          <app-input formControlName="input"></app-input>
+        </app-form-field>
+
+      <app-form-field
+        label="Password"
+        [required]="true"
+        [control]="form.controls.password"
+        [patternError]="regexErrors.password"
+        [isInline]="isInline"
+      >
+        <app-password formControlName="password"></app-password>
+      </app-form-field>
+
+    </form>
+</div>
 <code>
-  {{ form.value | json }}
+    {{ form.value | json }}
 </code>

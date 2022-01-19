@@ -1,10 +1,10 @@
-@import "~styles/mixins";
+@import "styles/mixins";
 
 .shadow {
-  @include shadow;
-  padding: 20px;
+    @include shadow;
+    padding: 20px;
 }
 
 .card {
-  @include card;
+    @include card;
 }

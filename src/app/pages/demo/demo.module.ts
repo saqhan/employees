@@ -6,9 +6,7 @@ import { DemoComponent } from './demo.component';
 
 
 @NgModule({
-  declarations: [
-    DemoComponent
-  ],
+  declarations: [DemoComponent],
   imports: [
     CommonModule,
     DemoRoutingModule
