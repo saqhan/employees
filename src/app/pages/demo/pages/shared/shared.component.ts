@@ -14,7 +14,7 @@ import {markFormGroupTouched, regex, regexErrors} from "@src/app/shared";
 })
 export class SharedComponent implements OnInit {
     // @ts-ignore
-  form: FormGroup;
+    form: FormGroup;
     isInline: boolean;
     regexErrors = regexErrors;
 
@@ -49,6 +49,16 @@ export class SharedComponent implements OnInit {
               validators: [
                 Validators.required
               ]
+          }],
+          select: [null, {
+              updateOn: 'change', validators: [
+                Validators.required
+            ]
+          }],
+          checkboxes: [null, {
+            updateOn: 'change', validators: [
+              Validators.required
+            ]
           }]
         });
     }

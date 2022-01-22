@@ -16,9 +16,9 @@ import {ControlItem, Value} from "@src/app/models/frontend";
 })
 export class CheckboxesComponent implements OnInit, ControlValueAccessor {
     @Input() items: ControlItem[] = [];
-    @Output() changed = new EventEmitter<Value[]>();
+    @Output() changed = new EventEmitter<Value[] | null>();
 
-    value: Value[] = [];
+    value: Value[] | null = [];
     isDisabled: boolean = false;
 
     constructor() { }
@@ -43,16 +43,18 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
         this.isDisabled = isDisabled;
     }
 
-    onChanged(value: Value, checked: boolean): void {
-        const selected = this.getSelected(value, checked);
+    onChanged(value: Value, event: Event): void {
+      const element = event.target as HTMLInputElement;
+      const checked = element.checked;
+
+      const selected = this.getSelected(value, checked);
 
         this.value = selected;
         this.propagateChange(selected);
         this.changed.emit(selected);
     }
 
-    // @ts-ignore
-  private getSelected(value: Value, checked: boolean): Value[] {
+  private getSelected(value: Value, checked: boolean): Value[] | null {
         const selected: Value[] = this.value ? [...this.value] : [];
 
         if (checked) {
@@ -64,10 +66,10 @@ export class CheckboxesComponent implements OnInit, ControlValueAccessor {
             selected.splice(index, 1);
         }
 
-        // return selected?.length ? selected : null;
+        return selected?.length ? selected : null;
     }
 
-    isChecked(value: Value): boolean {
+    isChecked(value: Value): boolean | null {
         return this.value && this.value.includes(value);
     }
 

@@ -1,4 +1,4 @@
-@import "styles/colors";
+@import "~styles/colors";
 
 .checkbox {
     display: block;
@@ -22,7 +22,7 @@
         &:checked {
             &~.checkbox__checkmark {
                 background-color: $primary;
-               
+
                 &:after {
                     display: block;
                     left: 7px;

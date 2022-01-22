@@ -12,7 +12,7 @@ export class FormFieldComponent implements OnInit {
     @Input() isInline: boolean = false;
     // @ts-ignore
   @Input() control: AbstractControl;
-    @Input() patternError: string = '';
+  @Input() patternError: string = '';
 
     constructor() {
         this.isInline = true;

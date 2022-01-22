@@ -3,13 +3,12 @@ export const environment = {
     name: 'dev',
     firebase: {
         config: {
-            apiKey: 'AIzaSyDm42gvMrleyMqeFBie8RDL6Y6YEY4gq5w',
-            authDomain: 'courseapp-3cbec.firebaseapp.com',
-            databaseURL: 'https://courseapp-3cbec.firebaseio.com',
-            projectId: 'courseapp-3cbec',
-            storageBucket: 'courseapp-3cbec.appspot.com',
-            messagingSenderId: '180836863766',
-            appId: '1:180836863766:web:6851bd302ae3ed12beca37'
+          apiKey: 'AIzaSyAvZq4miy2XChV_6eHiHMlZ9gXcsF5IkL0',
+          authDomain: 'employer-ab100.firebaseapp.com',
+          projectId: 'employer-ab100',
+          storageBucket: 'employer-ab100.appspot.com',
+          messagingSenderId: '640338552884',
+          appId: '1:640338552884:web:95186357e4f219b2e7c261'
         }
     }
 };
