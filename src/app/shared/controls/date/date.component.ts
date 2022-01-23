@@ -25,7 +25,7 @@ export class DateComponent implements OnInit, ControlValueAccessor {
 
     @Input() max: Date | undefined;
 
-    @Output() changed = new EventEmitter<Value>();
+    @Output() changed = new EventEmitter<Value | null>();
     @Output() closed = new EventEmitter<void>();
 
     value: any = '';
@@ -36,9 +36,8 @@ export class DateComponent implements OnInit, ControlValueAccessor {
     ngOnInit(): void {
     }
 
-    // @ts-ignore
-  get inputValue(): Date {
-        // return this.value ? new Date(this.value) : null;
+    get inputValue(): Date | null {
+        return this.value ? new Date(this.value) : null;
     }
 
     private propagateChange: any = () => { };
@@ -65,7 +64,6 @@ export class DateComponent implements OnInit, ControlValueAccessor {
 
         this.value = value;
         this.propagateChange(value);
-        // @ts-ignore
       this.changed.emit(value);
     }
 

@@ -44,6 +44,13 @@
         <app-checkboxes formControlName="checkboxes" [items]="items"></app-checkboxes>
       </app-form-field>
 
+      <app-form-field label="radios" [required]="true" [control]="form.controls.radios" [isInline]="isInline">
+        <app-radios formControlName="radios" [items]="items" ></app-radios>
+      </app-form-field>
+
+      <app-form-field label="date" [required]="true" [control]="form.controls.date" [isInline]="isInline">
+        <app-date formControlName="date" placeholder="Date"></app-date>
+      </app-form-field>
     </form>
 </div>
 <code>
