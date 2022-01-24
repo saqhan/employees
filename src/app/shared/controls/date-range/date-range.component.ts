@@ -25,8 +25,9 @@ export interface Placeholder {
 })
 export class DateRangeComponent implements OnInit, ControlValueAccessor {
 
-    @Input() placeholder: any = '';
+    @Input() placeholder: any;
     @Output() changed = new EventEmitter<Value>();
+    @Output() closed = new EventEmitter<Value>();
 
     // @ts-ignore
   form: FormGroup;
@@ -40,16 +41,14 @@ export class DateRangeComponent implements OnInit, ControlValueAccessor {
         });
     }
 
-    // @ts-ignore
-  get min(): Date {
+  get min(): Date | null {
         const from = this.form.controls.from.value;
-        // return from ? new Date(from) : null;
+        return from ? new Date(from) : null;
     }
 
-    // @ts-ignore
-  get max(): Date {
+  get max(): Date | null {
         const to = this.form.controls.to.value;
-        // return to ? new Date(to) : null;
+        return to ? new Date(to) : null;
     }
 
     private propagateChange: any = () => { };
@@ -84,6 +83,7 @@ export class DateRangeComponent implements OnInit, ControlValueAccessor {
 
     onClosed(): void {
         this.propagateTouched();
+        this.closed.emit();
     }
 
 }

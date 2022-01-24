@@ -1,5 +1,3 @@
-<h2>Actions</h2>
-
 <h2>Form</h2>
 
 <div class="wrapper">
@@ -7,37 +5,26 @@
 
     <form [formGroup]="form" novalidate autocomplete="off" (ngSubmit)="onSubmit()">
 
+        <app-button (click)="onSubmit()">Submit</app-button>
         <app-button (click)="onPatchValue()">Patch Value</app-button>
         <app-button (click)="onToggleInline()">Toggle Inline</app-button>
+        <app-button (click)="onToggleDisable()">Toggle Disabled</app-button>
         <br /><br /><br />
 
-        <app-form-field
-          label="Input"
-          [required]="true"
-          [control]="form.controls.input"
-          [isInline]="isInline"
-          [patternError]="regexErrors.numbers"
-        >
+        <app-form-field label="Input" [required]="true" [control]="form.controls.input" [isInline]="isInline" [patternError]="regexErrors.numbers">
           <app-input formControlName="input"></app-input>
         </app-form-field>
 
-      <app-form-field
-        label="Password"
-        [required]="true"
-        [control]="form.controls.password"
-        [patternError]="regexErrors.password"
-        [isInline]="isInline"
-      >
+      <app-form-field label="Password" [required]="true" [control]="form.controls.password" [patternError]="regexErrors.password" [isInline]="isInline">
         <app-password formControlName="password"></app-password>
       </app-form-field>
 
-      <app-form-field
-        label="Select"
-        [required]="true"
-        [control]="form.controls.select"
-        [isInline]="isInline"
-      >
+      <app-form-field label="Select" [required]="true" [control]="form.controls.select" [isInline]="isInline">
         <app-select formControlName="select" [items]="items"></app-select>
+      </app-form-field>
+
+      <app-form-field label="autocomplete" [required]="true" [control]="form.controls.autocomplete" [isInline]="isInline">
+        <app-autocomplete formControlName="autocomplete" [items]="items"></app-autocomplete>
       </app-form-field>
 
       <app-form-field label="checkboxes" [required]="true" [control]="form.controls.checkboxes" [isInline]="isInline">
@@ -51,6 +38,11 @@
       <app-form-field label="date" [required]="true" [control]="form.controls.date" [isInline]="isInline">
         <app-date formControlName="date" placeholder="Date"></app-date>
       </app-form-field>
+
+      <app-form-field label="date-range" [required]="true" [control]="form.controls.dateRange" [isInline]="isInline">
+        <app-date-range formControlName="dateRange" placeholder="Date"></app-date-range>
+      </app-form-field>
+
     </form>
 </div>
 <code>

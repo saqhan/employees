@@ -26,27 +26,28 @@ export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAcc
     @Output() changed = new EventEmitter<Value>();
 
     formControl = new FormControl();
-    options$: Observable<ControlItem[]> | [] | undefined;
+
+    options$: Observable<ControlItem[]>;
 
     private destroy = new Subject<any>();
 
-    constructor() { }
-
-    ngOnInit(): void {
-        this.options$ = this.formControl.valueChanges.pipe(
-            startWith(''),
-            filter(value => typeof value === 'string' || typeof value === 'object'),
-            map(value => typeof value === 'string' ? value : value.label),
-            map(label => label ? this.filter(label) : this.items.slice())
-        );
+    constructor() {
+      this.options$ = this.formControl.valueChanges.pipe(
+        startWith(''),
+        filter(value => typeof value === 'string' || typeof value === 'object'),
+        map(value => typeof value === 'string' ? value : value.label),
+        map(label => label ? this.filter(label) : this.items.slice())
+      );
+    }
+  ngOnInit(): void {
 
         this.formControl.valueChanges.pipe(
             takeUntil(this.destroy),
             distinctUntilChanged()
         ).subscribe(item => {
-            const value = typeof item === 'object' ? item.value : null;
-            this.propagateChange(value);
-            this.changed.emit(value);
+          const value = typeof item === 'object' ? item.value : null;
+          this.propagateChange(value);
+          this.changed.emit(value);
         });
     }
 
@@ -84,8 +85,8 @@ export class AutocompleteComponent implements OnInit, OnDestroy, ControlValueAcc
         }
     }
 
-    displayFn(item?: ControlItem): string | undefined {
-        return item ? item.label : undefined;
+    displayFn(item?: ControlItem): string {
+        return item ? item.label : '';
     }
 
     onBlur(): void {

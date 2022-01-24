@@ -55,6 +55,11 @@ export class SharedComponent implements OnInit {
                 Validators.required
             ]
           }],
+          autocomplete: [null, {
+            updateOn: 'change', validators: [
+              Validators.required
+            ]
+          }],
           checkboxes: [null, {
             updateOn: 'change', validators: [
               Validators.required
@@ -69,17 +74,37 @@ export class SharedComponent implements OnInit {
             updateOn: 'change', validators: [
               Validators.required
             ]
+          }],
+          dateRange: [null, {
+            updateOn: 'change', validators: [
+              Validators.required
+            ]
           }]
         });
     }
 
     onSubmit(): void {
         console.log('Submit!');
+
+        if (this.form.invalid) {
+          markFormGroupTouched(this.form);
+        }
     }
 
     onPatchValue(): void {
         this.form.patchValue({
-            input: 123,
+          input: 123,
+          password: '123123',
+          select: 1,
+          autocomplete: 3,
+          checkboxes: [2,3,4],
+          radios: 1,
+          date: new Date().getTime(),
+          dateRange: {
+              from: new Date(2022, 1, 4),
+              to: new Date().getTime()
+          }
+
         });
     }
 
